@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>create an activity</title>
+ <style>
+.hed{
+background-color:#1010fd;
+position :relative;
+
+}
+.hed img{
+float : right;
+right :20px;
+}
+.fot{
+background-color:#1010fd;
+}
+ </style>
+</head>
+<body>
+<header>
+<div class="hed">
+
+  <img src="{% static 'images/timeIcon.png'%} " height="200px" alt="icon">
+    <h1> Fill The Form To<br> Create An Activity </h1>
+</div>
+</header>
+<main>
+
+</main>
+<footer>
+    <h3>Create Activity </h3>
+    {% csrf_token %}
+<form action="activity_form" method="post" name="activity_from">
+    {% csrf_token %}
+    <h2>Activity Name :<input type="text" name="activity_name"></h2>
+    <h2>Description :<textarea cols="40" rows="3" name="description1"></textarea> </h2>
+    <h2>Start Date/Time :<input type="datetime-local" name="start_date"></h2>
+    <h2>Ending Date/Time : <input type="datetime-local" name="end_date"></h2>
+    <h2>notification mode :
+       01day <input type="radio" name="notificationMode" value="24">
+       2hours <input type="radio" name="notificationMode" value="2">
+        1hours<input type="radio" name="notificationMode" value="1">
+        5min<input type="radio" name="notificationMode" value="5">
+    </h2><br>
+
+    <input type="submit" style="background-color:#1010fd ;padding:10px" > <br>
+    {% for message in messages %}
+    <h2>{{ message }}</h2>
+    {% endfor %}
+</form>
+<div class="fot">
+    <h2>Thanks For Using Objectiva app</h2>
+</div>
+</footer>
+</body>
+</html>

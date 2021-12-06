@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>objectiva home </title>
+    <style>
+.hed{
+background-color:#0101fd;
+position : relative;
+}
+.fot{
+background-color:#0101fd;
+}
+.hed img {
+float: right;
+right:10px;
+position :absolute;
+}
+.hed h1{
+font-size:100px;
+}
+.bo{
+margin-top :1px;
+margin-bottom :2px;
+}
+.dro{
+float:left;
+}
+.drop {
+color:red;
+font-size:20px;
+background-image:url("{% static 'images/menu_icon.png' %}");
+background-color:rgba(01,01,200,0.90);
+padding:45px;
+top:10px;
+left :10px;
+cursor:pointer;
+
+}
+.dro{
+position : relative;
+display : inline-block;
+}
+.drop_content{
+display: none;
+position: absolute;
+background-color:#f9f9f9;
+min-width:200px;
+box-shadow:0px 15px 20px 0px rgba(0,0,0,0.2);
+
+}
+.drop_content a {
+color : black;
+font-size:40px;
+display:block;
+text-decoration:none;
+padding-right:300px;
+}
+.drop:hover{
+background-color:aqua;
+
+}
+.drop_content a:hover {background-color: #f1f1f1}
+
+.dro:hover .drop_content {
+display:block;
+
+}
+.main{
+<!--background-image:url("{% static 'images/menu_icon.png' %}");-->
+}
+.fot_links{
+padding:10px;
+margin-left:10px;
+}
+.fot_links a {
+padding:10px;
+color:black;
+text-decoration:none;
+
+}
+.dis_not_done{
+border-solid:3px;
+background-color:#f3f1f0;
+}
+.dis_not_done h2{
+color:#120900;
+}
+    </style>
+</head>
+<body>
+<div class="bo">
+<header>
+    <div class="hed">
+        <div class="dro">
+            <button class="drop"> Menu</button>
+            <div class="drop_content">
+                <a href="{% url 'home_index1' %}" >Home</a>
+                <a href="{% url 'activity' %}" >Activities</a>
+                <a href="{% url 'done_activity' %}" >Done_Activities</a>
+                <a href="{% url 'not_done' %}" >Activities_Not_Done</a>
+                <a href="{% url 'manage_page' %} " >Manage_Account</a>
+            </div>
+        </div>
+        <img src="{% static 'images/notDoneActivity.png'%}" height="100px">
+   <h1> unaccomplished activities </h1>
+
+    </div>
+</header>
+<main>
+<div class="main">
+
+    <h2 style="text-align:center; color:#1010fd">
+        welcome to objectiva app
+    </h2>
+<h1 style="text-align:center">This was not accomplished </h1>
+
+</div>
+    {% for activity in user.Activity.all %}
+    <div class="dis_not_done">
+    {% block content %}
+
+    <h2> Not  accomplished :{{ activity.activityName }} </h2>
+
+
+{% endblock %}
+
+</div>
+{% endfor %}
+</main>
+<footer>
+    <div class="fot">
+        <div class="fot_links">
+             <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'contact'%}">Contact Us </a>
+            <a href="{% url 'references' %}">References</a>
+        </div>
+
+        &copy;2021 objectiva all right reserve
+    </div>
+
+</footer>
+</div>
+</body>
+</html>
