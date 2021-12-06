@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sign Up</title>
+    <style>
+        .hed{
+        background-color:#1010fd;
+        }
+    .fot{
+background-color:#1010fd;
+    }
+h3{
+color:red;
+}
+    </style>
+</head>
+<body>
+<header>
+   <div class="hed">
+       <h1 style="text-align:center;font-size:25px" > Sign Up</h1>
+   </div>
+</header>
+<main>
+    <div class="maen">
+        {% for message in messages %}
+    <h3>{{message}}</h3>
+    {% endfor %}
+<form action="login_page" method="post">
+    {% csrf_token %}
+
+
+    <h2>User Name : <input type="text" name="userName" placeholder="Enter user name"></h2>
+   <h2>password : <input type="password" name="password"placeholder="Enter password "></h2>
+    <h2><input type="submit" value="Sign Up" style="background-color:yellow; padding:17px"></h2>
+</form>
+    </div>
+</main>
+<footer>
+    <div class="fot">
+        <h1 style="text-align:center; font-size:30px">Welcome To Objectiva </h1>
+    </div>
+</footer>
+</body>
+</html>
